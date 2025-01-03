@@ -38,9 +38,11 @@ jobs:
           
           if [[ "${{ steps.changed-files.outputs.all_changed_files }}" =~ "Microservices/email-service/" ]]; then
             echo "RUN_EMAILSERVICE_PIPELINE=true" >> $GITHUB_ENV
+          fi
           
           if [[ "${{ steps.changed-files.outputs.all_changed_files }}" =~ "Microservices/gateway/" ]]; then
             echo "RUN_GATEWAYSERVICE_PIPELINE=true" >> $GITHUB_ENV
+          fi
           
           if [[ "${{ steps.changed-files.outputs.all_changed_files }}" =~ "ClientApp/" ]]; then
             echo "RUN_CLIENTAPP_PIPELINE=true" >> $GITHUB_ENV
