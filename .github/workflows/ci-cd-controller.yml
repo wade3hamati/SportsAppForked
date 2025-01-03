@@ -34,10 +34,10 @@ jobs:
           fi
           if [[ "${{ steps.changed-files.outputs.all_changed_files }}" =~ "Microservices/order-service/" ]]; then
             echo "RUN_ORDERSERVICE_PIPELINE=true" >> $GITHUB_ENV
-          
+          fi
           if [[ "${{ steps.changed-files.outputs.all_changed_files }}" =~ "Microservices/gateway/" ]]; then
             echo "RUN_GATEWAYSERVICE_PIPELINE=true" >> $GITHUB_ENV
-          
+          fi
           if [[ "${{ steps.changed-files.outputs.all_changed_files }}" =~ "ClientApp" ]]; then
             echo "RUN_CLIENTAPP_PIPELINE=true" >> $GITHUB_ENV
           fi
@@ -46,31 +46,31 @@ jobs:
     needs: determine-pipelines
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger UserService CI
+      - name: Trigger UserService CI/CD
         if: env.RUN_USERSERVICE_PIPELINE == 'true'
         uses: benc-uk/workflow-dispatch@v4
         with:
           workflow: user-service-ci-cd.yml
 
-      - name: Trigger ProductService CI
+      - name: Trigger ProductService CI/CD
         if: env.RUN_PRODUCTSERVICE_PIPELINE == 'true'
         uses: benc-uk/workflow-dispatch@v4
         with:
           workflow: product-service-ci-cd.yml
 
-      - name: Trigger OrderService CI
+      - name: Trigger OrderService CI/CD
         if: env.RUN_ORDERSERVICE_PIPELINE == 'true'
         uses: benc-uk/workflow-dispatch@v4
         with:
           workflow: order-service-ci-cd.yml
 
-      - name: Trigger GatewayService CI
+      - name: Trigger GatewayService CI/CD
         if: env.RUN_GATEWAYSERVICE_PIPELINE == 'true'
         uses: benc-uk/workflow-dispatch@v4
         with:
           workflow: gateway-service-ci-cd.yml
 
-      - name: Trigger ClientApp CI
+      - name: Trigger ClientApp CI/CD
         if: env.RUN_CLIENTAPP_PIPELINE == 'true'
         uses: benc-uk/workflow-dispatch@v4
         with:
