@@ -48,30 +48,30 @@ jobs:
     steps:
       - name: Trigger UserService CI/CD
         if: env.RUN_USERSERVICE_PIPELINE == 'true'
-        uses: benc-uk/workflow-dispatch@v2
+        uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: user-service-ci-cd.yml
 
       - name: Trigger ProductService CI/CD
         if: env.RUN_PRODUCTSERVICE_PIPELINE == 'true'
-        uses: benc-uk/workflow-dispatch@v2
+        uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: product-service-ci-cd.yml
 
       - name: Trigger OrderService CI/CD
         if: env.RUN_ORDERSERVICE_PIPELINE == 'true'
-        uses: benc-uk/workflow-dispatch@v2
+        uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: order-service-ci-cd.yml
 
       - name: Trigger GatewayService CI/CD
         if: env.RUN_GATEWAYSERVICE_PIPELINE == 'true'
-        uses: benc-uk/workflow-dispatch@v2
+        uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: gateway-service-ci-cd.yml
 
       - name: Trigger ClientApp CI/CD
         if: env.RUN_CLIENTAPP_PIPELINE == 'true'
-        uses: benc-uk/workflow-dispatch@v2
+        uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: frontend-ci-cd.yml
